@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="popup.js"></script>
+  <title>Trilium Note Plugin</title>
+  <style>
+    /* 主容器設定 */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      padding: 20px;
+      width: 250px;
+      /*margin: 40px auto; !* 讓視窗置中 *!*/
+      position: relative;
+      border-radius: 8px;
+      box-shadow: 0 2px 110px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 新增筆記表單 */
+    #noteContent {
+      margin-top: 10px;
+    }
+
+    /* 文字輸入框 */
+    #noteContent textarea.NoteContent {
+      width: 100%;
+      min-height: 50px;
+      padding: 8px 10px;
+      font-size: 14px;
+      line-height: 1.5;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      resize: vertical;
+      box-sizing: border-box;
+      margin-bottom: 12px;
+      margin-top: 12px;
+      transition: border-color 0.3s ease;
+    }
+    #noteContent textarea.NoteContent:focus {
+      outline: none;
+      border-color: #4CAF50;
+    }
+
+    /* 共通按鈕樣式 */
+    #noteContent button {
+      display: block;
+      width: 100%;
+      padding: 10px 0;
+      font-size: 15px;
+      font-weight: bold;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.1s ease;
+    }
+    /* 共通按下時位移 */
+    #noteContent button:active {
+      transform: translateY(1px);
+    }
+
+    /* 新增 */
+    #noteContent button.addBtn {
+      background-color: #4CAF50;
+    }
+    #noteContent button.addBtn:hover {
+      background-color: #45A049;
+    }
+
+    /* 更新 */
+    #noteContent button.updateBtn {
+      background-color: #2196F3;
+    }
+    #noteContent button.updateBtn:hover {
+      background-color: #1976D2;
+    }
+
+    /* 刪除 */
+    #noteContent button.deleteBtn {
+      background-color: #F44336;
+    }
+    #noteContent button.deleteBtn:hover {
+      background-color: #D32F2F;
+    }
+
+
+    /* 齒輪按鈕：固定於右上角，加入 hover 效果 */
+    #openOptions {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 30px;
+      color: #888;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    #openOptions:hover {
+      color: #333;
+    }
+
+    /* 未登入提示訊息 */
+    #message {
+      margin-top: 10px;
+      text-align: center;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* 主操作區（初始隱藏） */
+    #mainSection {
+      margin-top: 15px;
+      display: none;
+    }
+
+    #selectedTextDisplay{
+      font-size: 15px;
+    }
+
+    /* 強調文字（紅色） */
+    .highlight {
+      color: #e53935;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- 齒輪按鈕，點擊後開啟選項頁 -->
+  <button id="openOptions" title="Settings">⚙</button>
+  <!-- 顯示未登入提示訊息 -->
+  <div id="message">尚未登入，請點擊右上角齒輪進入 Options 設置 & 登入！</div>
+
+  <!-- 主操作區（登入成功後顯示）：用於展示查詢結果與新增筆記 -->
+  <div id="mainSection">
+    <div id="selectedTextDisplay"></div>
+    <div id="noteStatus"></div>
+    <div id="noteContent"></div>
+  </div>
+
+</body>
+</html>

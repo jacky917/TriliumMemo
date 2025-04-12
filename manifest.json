@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Trilium Note Plugin",
+  "version": "1.0",
+  "description": "基於 Trilium 的筆記插件：先在選項頁登入獲取 token，再於 popup 顯示查詢或新增筆記",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["http://192.168.50.100:8080/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}

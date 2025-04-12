@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="options.js"></script>
+    <title>Trilium Note Plugin Options</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 500px;
+            margin: auto;
+        }
+        label {
+            display: block;
+            margin-top: 12px;
+        }
+        input {
+            width: 100%;
+            padding: 6px;
+            margin-top: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 16px;
+            padding: 8px 12px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        button:hover {
+            background-color: #45A049;
+        }
+        button:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body>
+<h2>Options</h2>
+<label for="optApiUrl">API URL</label>
+<input id="optApiUrl" type="text" placeholder="例如: http://192.168.50.100:8080" />
+
+<label for="optFolder">Folder (parentNoteId)</label>
+<input id="optFolder" type="text" placeholder="例如: root" />
+
+<label for="optPassword">Password</label>
+<input id="optPassword" type="password" placeholder="請輸入密碼" />
+
+<button id="saveOptions">Save</button>
+<button id="logout">Logout</button>
+<div id="saveStatus"></div>
+
+</body>
+</html>
